@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+      th="http://www.springframework.org/schema/mvc" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/css/style1.css}"/>
+</head>
+<body>
+<div th:replace="menu :: menu">Menu</div>
+<h2 th:text="#{menu.register}">Register</h2>
+
+<form id="usersForm" action="addUser" modelAttribute="user"
+      enctype="multipart/form-data" method="POST" th:object="${user}">
+
+    <table width="500" border="0" cellpadding="4" cellspacing="1"
+           align="center">
+        <tr>
+            <td width="130" align="right" th:text="#{register.name}" ></td>
+            <td width="270" align="left"><input name="name" type="text" id="name" data-th-required="#{register.name}" /></td>
+        </tr>
+        <tr>
+            <td width="130" align="right" th:text="#{register.lastName}"></td>
+            <td width="270" align="left"><input name="lastName" type="text" data-th-required="#{register.lastName}"/></td>
+        </tr>
+        <tr>
+            <td width="130" align="right" th:text="#{register.email}"/></td>
+            <td width="270" align="left"><input name="email" type="email" data-th-required="#{register.email}" />
+                <span  th:if="${#fields.hasErrors('email')}" class="error" th:errors="*{email}"  ></span>
+            </td>
+        </tr>
+        <tr>
+            <td width="130" align="right" th:text="#{register.password}"></td>
+            <td width="270" align="left"><input type="password" name="password" data-th-required="#{register.password}"/></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center" bgcolor="#fff">
+                <input type="submit" th:value="#{button.register}" class="formbutton"/>
+                <input type="button" th:value="#{button.cancel}" class="formbutton"
+                       th:onclick="'window.location.href = \'' + @{/index} + '\''" />
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

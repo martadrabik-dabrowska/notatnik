@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+      th="http://www.springframework.org/schema/mvc">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{profil.userData}"></title>
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/css/style1.css}"/>
+</head>
+<body>
+<div th:replace="menu :: menu">Menu</div>
+<div>
+    <h1 th:text="#{profil.userData}"></h1>
+</div>
+<table width="500" border="0" cellpadding="4" cellspacing="1" align="center">
+    <tr>
+        <td width="130"  align="left" th:text="#{register.email}"></td>
+        <td width="270"  align="left" th:text="${user.email}" name="email"></td>
+    </tr>
+    <tr>
+        <td width="130" align="left" th:text="#{register.name}">
+        </td>
+        <td width="270" align="left" th:text="${user.name}" name="name">
+        </td>
+    </tr>
+    <tr>
+        <td width="130" align="left" th:text="#{register.lastName}">
+        </td>
+        <td width="270" align="leftt" type="text" th:text="${user.lastName}" name="lastName">
+        </td>
+    </tr>
+    <tr>
+        <td width="130" align="left" th:text="#{profil.role}"></td>
+        <td th:switch="${user.RoleNumber}" width="270" align="left">
+                <div th:case="${1}">
+                    <div th:text="#{word.admin}"></div>
+                </div>
+                <div th:case="${2}">
+                    <div th:text="#{word.user}"></div>
+                </div>
+        </td>
+    </tr>
+</table>
+<table width="500" border="0" cellpadding="4" cellspacing="1" align="center">
+</table>
+</body>
+</html>

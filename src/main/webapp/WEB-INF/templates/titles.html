@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pl"  xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5 ">
+<head>
+    <meta charset="UTF-8">
+    <title>Tematyka</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/css/style1.css}"/>
+</head>
+<body>
+<div id="menu" th:replace="menu :: menu">Menu</div>
+<div>
+    <a href="/chat"><span th:text="#{chat.title1}"></span></a>
+    <a href="/chat"><span th:text="#{chat.title2}"></span></a>
+    <a href="/chat"><span th:text="#{chat.title3}"></span></a>
+</div>
+</body>
+</html>

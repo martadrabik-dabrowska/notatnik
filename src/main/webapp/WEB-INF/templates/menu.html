@@ -1,0 +1,32 @@
+<!DOCTYPE html><!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+      th="http://www.springframework.org/schema/mvc" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>Menu</title>
+</head>
+<body>
+<div th:fragment="menu">
+    <table width= "100%" border = "0" cellpadding = "8" cellspacing ="4" class = "tableMenuBg" bgcolor = "#e6f2ff">
+    <tr>
+    <td align = "left" width = "900" >
+        <a href = "/index"><span th:text="#{menu.mainPage}"></span></span></a>
+    <div sec:authorize = "hasRole('ROLE_ADMIN')">
+        <a href = "/admin"><span th:text="#{menu.adminPage}"></span></span></a>
+    </div>
+    </td >
+    <td align = "right" >
+    <div sec:authorize = "hasRole('ANONYMOUS')">
+        <a href ="/login"><span th:text="#{menu.login}"></span></span></a>&nbsp;&nbsp;
+    <a href = "/register"><span th:text="#{menu.register}"></span></span></a>&nbsp;&nbsp;
+    </div>
+    <div sec:authorize = "isAuthenticated()">
+        <a href = "/profil"><span th:text="#{menu.profil}"></span></span></a>
+        <a href="/titles"><span th:text="#{menu.chat}"></span></a>
+        <a href = "/logout"><span th:text="#{menu.logout}"></span></span></a>
+    </div>
+    </td>
+    </tr>
+    </table>
+</div>
+</body>
+</html>

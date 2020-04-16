@@ -1,0 +1,16 @@
+<!DOCTYPE html><!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+      th="http://www.springframework.org/schema/mvc">
+<head>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+      th="http://www.springframework.org/schema/mvc">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/css/style1.css}"/>
+    <title th:text="#{menu.adminPage}">Admin</title>
+</head>
+<body>
+<a href = "/index"><span th:text="#{menu.mainPage}"></span></a>
+<div th:replace="adminmenu :: header">menu</div>
+</body>
+</html>

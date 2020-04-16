@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+      th="http://www.springframework.org/schema/mvc">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{menu.users}">Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/css/style1.css}"/>
+    <script type="text/javascript" th:src="@{/resources/js/search.js}"></script>
+</head>
+<body>
+<div th:replace="menu :: menu"> menu</div>
+<h2 th:text="#{menu.users}"></h2>
+<div align="center">
+    <div align="right" style="width: 1000px; padding: 2px;">
+        <input type="hidden" name="cp" id="cp"/>
+        <input type="text" id="searchString"/>&nbsp;&nbsp;<input type="button" value="Wyszukaj"
+        onclick="startSearch()"/><br/>
+        <span id="errorSearch" style="color: red;"></span>
+    </div>
+    <table width="1000" border="0" cellpadding="6" cellspacing="2">
+        <thead>
+        <tr bgcolor="#ffddcc">
+            <td width="40" align="center"><b><p  th:utext="#{user.id}" hidden></p></b></td>
+            <td width="190" align="center"><b><p th:utext="#{register.name}"></p></b></td>
+            <td width="190" align="center"><b><p th:utext="#{register.lastName}"></p></b></td>
+            <td width="200" align="center"><b><p th:utext="#{register.email}"></p></p></b></td>
+            <td width="190" align="center"><b><p th:utext="#{profil.role}"></p></p></b></td>
+            <td width="190" align="center"><b>Delete user</b></td>
+        </tr>
+        </thead>
+        <tbody>
+            <tr th:each="user : ${userList}" onmousemove="changeTrBg(this)" onmouseout="defaultTrBg(this)">
+              <td></td>
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.lastName}"></td>
+            <td th:text="${user.email}"></td>
+                <td th:switch="${user.RoleNumber}" width="100" align="center">
+                    <div th:case="${1}">
+                        <span th:text="#{word.admin}"></span>
+                    </div>
+                    <div th:case="${2}">
+                        <span th:text="#{word.user}"></span>
+                    </div>
+                </td>
+                <td th:switch="${user.RoleNumber}">
+                    <div th:case="${1}">
+                        <img src="/resources/images/deliconinact.png" width="16" height="16" />
+                    </div>
+                    <div th:case="${2}">
+                        <a th:href="@{'/admin/users/delete/' + ${user.id}}" title="Nie można usunąć">
+                        <img src="/resources/images/delicon.png" width="16" height="16" title="Usuń"/>
+                        </a>
+                    </div>
+                </td>
+      </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
